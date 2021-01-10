@@ -3,7 +3,7 @@ import { debounce } from "debounce";
 import API from './apiService.js';
 import refs from './refs.js';
 import errMsg from './notifications.js';
-import { length } from 'file-loader';
+// import { length } from 'file-loader';
 
 refs.input.addEventListener('click', clear);
 refs.searchForm.addEventListener('submit', onSearchChange);
