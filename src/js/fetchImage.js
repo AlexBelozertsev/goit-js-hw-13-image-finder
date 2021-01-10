@@ -6,10 +6,11 @@ import errMsg from './notifications.js';
 import { length } from 'file-loader';
 
 refs.input.addEventListener('click', clear);
-refs.input.addEventListener('input', debounce(onSearchChange, 800));
+refs.searchForm.addEventListener('submit', onSearchChange);
 refs.loadMoreBtn.addEventListener('click', renderNextPage);
 
-function onSearchChange() {
+function onSearchChange(event) {
+    event.preventDefault();
     clear();
     API.resetPage();
     const nameInput = refs.input.value;
@@ -33,14 +34,18 @@ function renderImageCard(query) {
     } else {
         const markup = imageCard(query);
         refs.gallery.insertAdjacentHTML("beforeend", markup);
-        showLoadBth();
+        if (query.length < API.perPage) {
+            hideLoadBth();
+        } else {
+            showLoadBth();
+        }
     }
 };
 function showLoadBth() {
-    refs.loadMoreBtn.style.opacity = 1;
+    refs.loadMoreBtn.classList.remove('hidden');
 };
 function hideLoadBth() {
-    refs.loadMoreBtn.style.opacity = 0;
+    refs.loadMoreBtn.classList.add('hidden');
 }
 function scrollDown() {
     window.scrollBy({

@@ -63,7 +63,6 @@ img {
     3px 3px 3px rgba(247, 149, 2, 0.14), 3px 3px 5px rgba(247, 149, 2, 0.12);
 }
 .loadMoreBtn {
-  opacity: 0;
   margin: 20px;
   padding: 15px;
   font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -72,8 +71,10 @@ img {
   font-weight: 500;
   font-size: 18px;
 }
-.loadMoreBtn:hover,
-.loadMoreBtn:focus {
+.hidden {
+  display: none;
+}
+.loadMoreBtn:hover {
   background-color: #fb8c00;
   font-weight: bold;
   border-radius: 5px;
